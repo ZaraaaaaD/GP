@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yNqtGjDcgVI=",
+  "dgSpecHash": "9B8m/ylB1KM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Z A R D\\source\\repos\\SAVIOR\\Savior\\Savior.csproj",
+  "projectFilePath": "E:\\Graduation Project\\Savior\\Savior.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Z A R D\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Z A R D\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

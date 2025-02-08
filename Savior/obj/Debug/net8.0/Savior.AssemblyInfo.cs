@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Savior")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9129b0c20ee2ef79b3a66dd61868a842012b3373")]
 [assembly: System.Reflection.AssemblyProductAttribute("Savior")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Savior")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

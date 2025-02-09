@@ -100,9 +100,25 @@
     ]
   },
   {
-    "ContainingType": "Savior.Controllers.ConnectUsController",
-    "Method": "GetConnectUsPage",
-    "RelativePath": "api/ConnectUs",
+    "ContainingType": "ConnectUsController",
+    "Method": "SubmitFeedback",
+    "RelativePath": "api/connectus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Savior.Models.ContactUs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectUsController",
+    "Method": "GetFeedback",
+    "RelativePath": "api/connectus",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -1,10 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Savior.Data;
 using Savior.Data;
 using Savior.Models;
 using Savior.Services;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Savior.Controllers
 {
@@ -13,10 +17,14 @@ namespace Savior.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public AuthenticationController(ApplicationDbContext context)
+
+        public AuthenticationController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
+
         }
 
 
@@ -47,8 +55,33 @@ namespace Savior.Controllers
             if (user == null || user.Password != login.Password)
                 return Unauthorized("Invalid credentials.");
 
-           
-            return Ok("Login successful");
+            var token = GenerateJwtToken(user);
+
+            return Ok(new
+            {
+                Message = "Login successful",
+                Token = token
+            });
+        }
+
+        private string GenerateJwtToken(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]); 
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email)
+            }),
+                Expires = DateTime.UtcNow.AddHours(1), 
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
         [HttpPost("forgot-password")]
         public async Task<ActionResult> ForgotPassword([FromBody] string email, [FromServices] EmailService emailService)

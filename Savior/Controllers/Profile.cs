@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Savior.Data;
 using System.Security.Claims;
 using System.Threading.Tasks;
-
-[Authorize]  
+[Authorize]
 [ApiController]
 [Route("api/profile")]
 public class ProfileController : ControllerBase
@@ -16,17 +15,17 @@ public class ProfileController : ControllerBase
         _context = context;
     }
 
-    [Authorize] 
+    [Authorize]
     [HttpGet]
-    public IActionResult GetProfile()
+    public async Task<IActionResult> GetProfile()
     {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; 
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (userId == null)
         {
             return Unauthorized();
         }
 
-        var user = _context.Users.Find(userId);
+        var user = await _context.Users.FindAsync(int.Parse(userId));
         if (user == null)
         {
             return NotFound("User not found");
@@ -42,7 +41,7 @@ public class ProfileController : ControllerBase
     }
 
 
-    [HttpPut("UpdateProfile")]
+[HttpPut("UpdateProfile")]
     public async Task<IActionResult> UpdateProfile([FromBody] UpdateData model)
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

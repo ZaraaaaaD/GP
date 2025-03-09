@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Savior",
-    "version": "1.0"
+    "title": "Savior API",
+    "version": "v1"
   },
   "paths": {
     "/api/AboutSavior": {
@@ -574,6 +574,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "أدخل الـ JWT Token بالشكل ده: Bearer YOUR_TOKEN_HERE",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

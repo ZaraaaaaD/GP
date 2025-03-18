@@ -136,13 +136,77 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Savior.Controllers.EmergencyTeamController",
-    "Method": "GetEmergencyTeamPage",
-    "RelativePath": "api/EmergencyTeam",
+    "ContainingType": "EmergencyController",
+    "Method": "CancelEmergency",
+    "RelativePath": "api/emergency/cancel-emergency",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "emergencyId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmergencyController",
+    "Method": "CancelMedical",
+    "RelativePath": "api/emergency/cancel-medical",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmergencyController",
+    "Method": "GetUserRequests",
+    "RelativePath": "api/emergency/my-requests",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmergencyController",
+    "Method": "RequestEmergency",
+    "RelativePath": "api/emergency/request-emergency",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "emergencyRequest",
+        "Type": "Savior.Models.Emergency",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmergencyController",
+    "Method": "RequestMedical",
+    "RelativePath": "api/emergency/request-medical",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "medicalRequest",
+        "Type": "Savior.Models.MedicalTeam",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

@@ -10,6 +10,8 @@ namespace Savior.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<ContactUs> ContactUs { get; set; }
+        public DbSet<Emergency> Emergencies { get; set; }
+        public DbSet<MedicalTeam> MedicalTeams { get; set; }
 
     }
 }

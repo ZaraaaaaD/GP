@@ -3,8 +3,40 @@
   "WorkspaceRootPath": "E:\\Graduation Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|e:\\graduation project\\savior\\model\\emergency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|solutionrelative:savior\\model\\emergency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Graduation Project\\Savior\\Migrations\\20250318124631_NewUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Savior\\Migrations\\20250318124631_NewUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|e:\\graduation project\\savior\\model\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|solutionrelative:savior\\model\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|e:\\graduation project\\savior\\model\\clinic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|solutionrelative:savior\\model\\clinic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|e:\\graduation project\\savior\\model\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|solutionrelative:savior\\model\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|e:\\graduation project\\savior\\model\\worksat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|solutionrelative:savior\\model\\worksat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|e:\\graduation project\\savior\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|solutionrelative:savior\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|e:\\graduation project\\savior\\model\\firstaid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|solutionrelative:savior\\model\\firstaid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|e:\\graduation project\\savior\\enumerations\\paymentforbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|solutionrelative:savior\\enumerations\\paymentforbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|e:\\graduation project\\savior\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0930585E-7F34-498E-A1CA-2223C674E977}|Savior\\Savior.csproj|solutionrelative:savior\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +51,118 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Emergency.cs",
-              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Model\\Emergency.cs",
-              "RelativeDocumentMoniker": "Savior\\Model\\Emergency.cs",
-              "ToolTip": "E:\\Graduation Project\\Savior\\Model\\Emergency.cs",
-              "RelativeToolTip": "Savior\\Model\\Emergency.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAaAAAAAAAAAA==",
+              "Title": "20250318124631_NewUpdate.cs",
+              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Migrations\\20250318124631_NewUpdate.cs",
+              "RelativeDocumentMoniker": "Savior\\Migrations\\20250318124631_NewUpdate.cs",
+              "ToolTip": "E:\\Graduation Project\\Savior\\Migrations\\20250318124631_NewUpdate.cs",
+              "RelativeToolTip": "Savior\\Migrations\\20250318124631_NewUpdate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T11:56:30.449Z",
+              "WhenOpened": "2025-03-18T12:46:32.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Model\\User.cs",
+              "RelativeDocumentMoniker": "Savior\\Model\\User.cs",
+              "ToolTip": "E:\\Graduation Project\\Savior\\Model\\User.cs",
+              "RelativeToolTip": "Savior\\Model\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAUwA8AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:38:33.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PaymentForBooking.cs",
+              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Enumerations\\PaymentForBooking.cs",
+              "RelativeDocumentMoniker": "Savior\\Enumerations\\PaymentForBooking.cs",
+              "ToolTip": "E:\\Graduation Project\\Savior\\Enumerations\\PaymentForBooking.cs",
+              "RelativeToolTip": "Savior\\Enumerations\\PaymentForBooking.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:36:57.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FirstAid.cs",
+              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Model\\FirstAid.cs",
+              "RelativeDocumentMoniker": "Savior\\Model\\FirstAid.cs",
+              "ToolTip": "E:\\Graduation Project\\Savior\\Model\\FirstAid.cs",
+              "RelativeToolTip": "Savior\\Model\\FirstAid.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:24:35.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Savior\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "E:\\Graduation Project\\Savior\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Savior\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAywC4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:23:22.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WorksAt.cs",
+              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Model\\WorksAt.cs",
+              "RelativeDocumentMoniker": "Savior\\Model\\WorksAt.cs",
+              "ToolTip": "E:\\Graduation Project\\Savior\\Model\\WorksAt.cs",
+              "RelativeToolTip": "Savior\\Model\\WorksAt.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:22:56.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Model\\Booking.cs",
+              "RelativeDocumentMoniker": "Savior\\Model\\Booking.cs",
+              "ToolTip": "E:\\Graduation Project\\Savior\\Model\\Booking.cs",
+              "RelativeToolTip": "Savior\\Model\\Booking.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wCoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:22:18.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Clinic.cs",
+              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Model\\Clinic.cs",
+              "RelativeDocumentMoniker": "Savior\\Model\\Clinic.cs",
+              "ToolTip": "E:\\Graduation Project\\Savior\\Model\\Clinic.cs",
+              "RelativeToolTip": "Savior\\Model\\Clinic.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAwAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:21:36.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Doctor.cs",
+              "DocumentMoniker": "E:\\Graduation Project\\Savior\\Model\\Doctor.cs",
+              "RelativeDocumentMoniker": "Savior\\Model\\Doctor.cs",
+              "ToolTip": "E:\\Graduation Project\\Savior\\Model\\Doctor.cs",
+              "RelativeToolTip": "Savior\\Model\\Doctor.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAuwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:20:47.106Z",
               "EditorCaption": ""
             }
           ]

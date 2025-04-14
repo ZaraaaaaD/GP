@@ -126,25 +126,57 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Savior.Controllers.DoctorController",
-    "Method": "GetDoctorPage",
-    "RelativePath": "api/Doctor",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EmergencyController",
-    "Method": "CancelEmergency",
-    "RelativePath": "api/emergency/cancel-emergency",
+    "ContainingType": "DoctorController",
+    "Method": "BookAppointment",
+    "RelativePath": "api/doctor/book",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "emergencyId",
+        "Name": "booking",
+        "Type": "Savior.Models.Booking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoctorController",
+    "Method": "GetUserBookings",
+    "RelativePath": "api/doctor/bookings/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Savior.Models.Booking, Savior, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoctorController",
+    "Method": "CancelBooking",
+    "RelativePath": "api/doctor/cancel/{bookingId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookingId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -152,15 +184,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "EmergencyController",
-    "Method": "CancelMedical",
-    "RelativePath": "api/emergency/cancel-medical",
-    "HttpMethod": "POST",
+    "ContainingType": "DoctorController",
+    "Method": "DeleteDoctor",
+    "RelativePath": "api/doctor/delete/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "teamId",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -168,45 +200,96 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "EmergencyController",
-    "Method": "GetUserRequests",
-    "RelativePath": "api/emergency/my-requests",
+    "ContainingType": "DoctorController",
+    "Method": "GetDoctor",
+    "RelativePath": "api/doctor/doctor/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Savior.Models.Doctor",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoctorController",
+    "Method": "GetDoctors",
+    "RelativePath": "api/doctor/doctors",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Savior.Models.Doctor, Savior, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "EmergencyController",
-    "Method": "RequestEmergency",
-    "RelativePath": "api/emergency/request-emergency",
+    "ContainingType": "DoctorController",
+    "Method": "RegisterDoctor",
+    "RelativePath": "api/doctor/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "emergencyRequest",
-        "Type": "Savior.Models.Emergency",
+        "Name": "doctor",
+        "Type": "Savior.Models.Doctor",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "EmergencyController",
-    "Method": "RequestMedical",
-    "RelativePath": "api/emergency/request-medical",
-    "HttpMethod": "POST",
+    "ContainingType": "DoctorController",
+    "Method": "UpdateDoctor",
+    "RelativePath": "api/doctor/update/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "medicalRequest",
-        "Type": "Savior.Models.MedicalTeam",
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "doctor",
+        "Type": "Savior.Models.Doctor",
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Savior.Controllers.EmergencyController",
+    "Method": "Welcome",
+    "RelativePath": "api/Emergency",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -221,8 +304,18 @@
   },
   {
     "ContainingType": "Savior.Controllers.HomeController",
-    "Method": "GetHomePage",
-    "RelativePath": "api/Home",
+    "Method": "GetMyOrders",
+    "RelativePath": "api/Home/MyOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Savior.Controllers.HomeController",
+    "Method": "GetMyBookings",
+    "RelativePath": "api/Home/MyRegistration",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

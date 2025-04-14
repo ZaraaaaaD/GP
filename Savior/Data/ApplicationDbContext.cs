@@ -16,6 +16,7 @@ namespace Savior.Data
         public DbSet<Clinic> Clinics { get; set; }
         public DbSet<WorksAt> WorksAts { get; set; }
         public DbSet<FirstAid> FirstAids { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

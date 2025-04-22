@@ -15,7 +15,6 @@ namespace Savior.Models
         public int ClinicID { get; set; }
         public Clinic Clinic { get; set; }
 
-        [Required]
-        public TimeOnly ShiftTiming { get; set; }
+       
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Savior.Data;
 using Savior.Data;
 using Savior.Models;
+using Savior.Dtos;
 using Savior.Services;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -29,20 +30,31 @@ namespace Savior.Controllers
 
 
         [HttpPost("signup")]
-        public async Task<ActionResult<User>> SignUp(User user)
+        public async Task<ActionResult> SignUp(RegisterDto dto)
         {
-            if (user == null)
+            if (dto == null)
                 return BadRequest("User data is required.");
 
-            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
             if (existingUser != null)
                 return Conflict("Email is already registered.");
+
+            var user = new User
+            {
+                Fname = dto.FirstName,
+                Lname = dto.LastName,
+                Email = dto.Email,
+                Password = dto.Password, 
+                Phone = dto.Phone,
+                ConfirmPassword = dto.ConfirmPassword,
+            };
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(SignUp), new { id = user.Id }, user);
         }
+
 
         [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] Login login)
@@ -76,7 +88,7 @@ namespace Savior.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email)
             }),
-                Expires = DateTime.UtcNow.AddHours(1), 
+                Expires = DateTime.UtcNow.AddHours(72), 
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
@@ -84,23 +96,20 @@ namespace Savior.Controllers
             return tokenHandler.WriteToken(token);
         }
         [HttpPost("forgot-password")]
-        public async Task<ActionResult> ForgotPassword([FromBody] string email, [FromServices] EmailService emailService)
+        public async Task<ActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request, [FromServices] EmailService emailService)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
 
             if (user == null)
                 return NotFound("Email not found.");
 
-            
             var code = new Random().Next(100000, 999999).ToString();
 
-           
             var subject = "Password Reset Code";
             var body = $"Your password reset code is: {code}";
 
-            await emailService.SendEmailAsync(email, subject, body);
+            await emailService.SendEmailAsync(request.Email, subject, body);
 
-           
             user.ResetCode = code;
             user.ResetCodeExpiry = DateTime.UtcNow.AddMinutes(5);
             _context.Users.Update(user);
@@ -108,6 +117,7 @@ namespace Savior.Controllers
 
             return Ok("A code has been sent to your email.");
         }
+
         [HttpPost("confirm-code")]
         public async Task<ActionResult> ConfirmCode([FromBody] ConfirmCodeRequest request)
         {

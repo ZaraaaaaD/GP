@@ -13,6 +13,8 @@ namespace Savior.Data
         public DbSet<Emergency> Emergencies { get; set; }
         public DbSet<MedicalTeam> MedicalTeams { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<WeeklySchedule> WeeklySchedules { get; set; }
+        public DbSet<DailySchedule> DailySchedules { get; set; }
         public DbSet<Clinic> Clinics { get; set; }
         public DbSet<WorksAt> WorksAts { get; set; }
         public DbSet<FirstAid> FirstAids { get; set; }
@@ -53,8 +55,19 @@ namespace Savior.Data
                 .HasOne(f => f.User)
                 .WithMany(u => u.FirstAids)
                 .HasForeignKey(f => f.UserID);
+            
+            modelBuilder.Entity<DailySchedule>()
+                .HasOne(d => d.Clinic)
+                .WithMany(c => c.DailySchedules)
+                .HasForeignKey(d => d.ClinicID);
+
+            modelBuilder.Entity<WeeklySchedule>()
+                .HasOne(w => w.Clinic)
+                .WithMany(c => c.WeeklySchedules)
+                .HasForeignKey(w => w.ClinicID);
+        
+
 
         }
-
     }
 }

@@ -36,7 +36,8 @@ public class ProfileController : ControllerBase
             Fname = user.Fname,
             Lname = user.Lname,
             Email = user.Email,
-            Phone = user.Phone
+            Phone = user.Phone,
+            Password = user.Password
         });
     }
 

@@ -36,6 +36,17 @@ namespace Savior.Migrations
                     b.Property<int>("ClinicID")
                         .HasColumnType("int");
 
+                    b.Property<string>("Day")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DoctorID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Time")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
@@ -64,9 +75,11 @@ namespace Savior.Migrations
 
                     b.HasIndex("ClinicID");
 
+                    b.HasIndex("DoctorID");
+
                     b.HasIndex("UserID");
 
-                    b.ToTable("Booking");
+                    b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("Savior.Models.Clinic", b =>
@@ -77,8 +90,12 @@ namespace Savior.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClinicID"));
 
-                    b.Property<int>("BuildingNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("BookingPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -89,7 +106,7 @@ namespace Savior.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Street")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -123,6 +140,39 @@ namespace Savior.Migrations
                     b.ToTable("ContactUs");
                 });
 
+            modelBuilder.Entity("Savior.Models.DailySchedule", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("ClinicID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DayOfWeek")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DoctorID")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ClinicID");
+
+                    b.HasIndex("DoctorID");
+
+                    b.ToTable("DailySchedules");
+                });
+
             modelBuilder.Entity("Savior.Models.Doctor", b =>
                 {
                     b.Property<int>("DoctorID")
@@ -133,6 +183,18 @@ namespace Savior.Migrations
 
                     b.Property<decimal>("BookingPrice")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClinicName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -151,12 +213,30 @@ namespace Savior.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("MedicalLicenseNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Rating")
+                        .HasColumnType("float");
+
+                    b.Property<string>("SSN")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -262,6 +342,33 @@ namespace Savior.Migrations
                     b.ToTable("MedicalTeams");
                 });
 
+            modelBuilder.Entity("Savior.Models.WeeklySchedule", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("ClinicID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DayOfWeek")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DoctorID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ClinicID");
+
+                    b.HasIndex("DoctorID");
+
+                    b.ToTable("WeeklySchedules");
+                });
+
             modelBuilder.Entity("Savior.Models.WorksAt", b =>
                 {
                     b.Property<int>("DoctorID")
@@ -269,9 +376,6 @@ namespace Savior.Migrations
 
                     b.Property<int>("ClinicID")
                         .HasColumnType("int");
-
-                    b.Property<TimeOnly>("ShiftTiming")
-                        .HasColumnType("time");
 
                     b.HasKey("DoctorID", "ClinicID");
 
@@ -287,6 +391,10 @@ namespace Savior.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ConfirmPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -327,6 +435,12 @@ namespace Savior.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Savior.Models.Doctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("User", "User")
                         .WithMany("Bookings")
                         .HasForeignKey("UserID")
@@ -335,7 +449,26 @@ namespace Savior.Migrations
 
                     b.Navigation("Clinic");
 
+                    b.Navigation("Doctor");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Savior.Models.DailySchedule", b =>
+                {
+                    b.HasOne("Savior.Models.Clinic", "Clinic")
+                        .WithMany("DailySchedules")
+                        .HasForeignKey("ClinicID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Savior.Models.Doctor", null)
+                        .WithMany("DailySchedules")
+                        .HasForeignKey("DoctorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Clinic");
                 });
 
             modelBuilder.Entity("Savior.Models.Emergency", b =>
@@ -371,6 +504,23 @@ namespace Savior.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Savior.Models.WeeklySchedule", b =>
+                {
+                    b.HasOne("Savior.Models.Clinic", "Clinic")
+                        .WithMany("WeeklySchedules")
+                        .HasForeignKey("ClinicID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Savior.Models.Doctor", null)
+                        .WithMany("WeeklySchedules")
+                        .HasForeignKey("DoctorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Clinic");
+                });
+
             modelBuilder.Entity("Savior.Models.WorksAt", b =>
                 {
                     b.HasOne("Savior.Models.Clinic", "Clinic")
@@ -392,11 +542,19 @@ namespace Savior.Migrations
 
             modelBuilder.Entity("Savior.Models.Clinic", b =>
                 {
+                    b.Navigation("DailySchedules");
+
+                    b.Navigation("WeeklySchedules");
+
                     b.Navigation("WorksAts");
                 });
 
             modelBuilder.Entity("Savior.Models.Doctor", b =>
                 {
+                    b.Navigation("DailySchedules");
+
+                    b.Navigation("WeeklySchedules");
+
                     b.Navigation("WorksAts");
                 });
 

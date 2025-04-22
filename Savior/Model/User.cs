@@ -7,7 +7,9 @@ public class User
     public string Lname { get; set; }  
     public string Email { get; set; }
     public string Phone { get; set; }
-    public string Password { get; set; }  
+    public string Password { get; set; }
+    public string ConfirmPassword { get; set; }
+
     public string? ResetCode { get; set; }  
     public DateTime? ResetCodeExpiry { get; set; }
     public ICollection<Booking> Bookings { get; set; }

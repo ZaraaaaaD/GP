@@ -21,6 +21,11 @@ namespace Savior.Models
         public int ClinicID { get; set; }
         public Clinic Clinic { get; set; }
 
+        public int DoctorID { get; set; }  // أضف DoctorID
+        public Doctor Doctor { get; set; } // أضف العلاقة
+        public string Day { get; set; } // علشان نستخدمها في DTO
+        public string Time { get; set; }
+
         [Required]
         public DateTime patientBirthdate { get; set; }
 
@@ -34,6 +39,7 @@ namespace Savior.Models
         public DateTime bookingTime { get; set; }
         [Required]
         public string receipt { get; set; } = string.Empty;
+
 
 
         [Required]

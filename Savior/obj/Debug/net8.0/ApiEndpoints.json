@@ -34,8 +34,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "email",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "Savior.Models.ForgotPasswordRequest",
         "IsRequired": true
       }
     ],
@@ -82,22 +82,12 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "User",
+        "Name": "dto",
+        "Type": "Savior.Dtos.RegisterDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "User",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "ConnectUsController",
@@ -127,6 +117,32 @@
   },
   {
     "ContainingType": "DoctorController",
+    "Method": "GetDoctorById",
+    "RelativePath": "api/doctor/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Savior.Dto.DoctorDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoctorController",
     "Method": "BookAppointment",
     "RelativePath": "api/doctor/book",
     "HttpMethod": "POST",
@@ -134,96 +150,12 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "booking",
-        "Type": "Savior.Models.Booking",
+        "Name": "dto",
+        "Type": "Savior.Dto.BookAppointmentDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoctorController",
-    "Method": "GetUserBookings",
-    "RelativePath": "api/doctor/bookings/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Savior.Models.Booking, Savior, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "DoctorController",
-    "Method": "CancelBooking",
-    "RelativePath": "api/doctor/cancel/{bookingId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "bookingId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoctorController",
-    "Method": "DeleteDoctor",
-    "RelativePath": "api/doctor/delete/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoctorController",
-    "Method": "GetDoctor",
-    "RelativePath": "api/doctor/doctor/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Savior.Models.Doctor",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   },
   {
     "ContainingType": "DoctorController",
@@ -233,6 +165,58 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Savior.Dto.DoctorDTO, Savior, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoctorController",
+    "Method": "GetDoctorsBySpecialty",
+    "RelativePath": "api/doctor/doctors/by-specialty",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "specialty",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Savior.Dto.DoctorDTO, Savior, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoctorController",
+    "Method": "SearchDoctorsByName",
+    "RelativePath": "api/doctor/doctors/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[Savior.Models.Doctor, Savior, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -254,8 +238,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "doctor",
-        "Type": "Savior.Models.Doctor",
+        "Name": "dto",
+        "Type": "Savior.Dto.DoctorRegisterDto",
         "IsRequired": true
       }
     ],
@@ -263,24 +247,23 @@
   },
   {
     "ContainingType": "DoctorController",
-    "Method": "UpdateDoctor",
-    "RelativePath": "api/doctor/update/{id}",
-    "HttpMethod": "PUT",
+    "Method": "GetAllSpecialties",
+    "RelativePath": "api/doctor/specialties",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
+    "Parameters": [],
+    "ReturnTypes": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "doctor",
-        "Type": "Savior.Models.Doctor",
-        "IsRequired": true
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
-    ],
-    "ReturnTypes": []
+    ]
   },
   {
     "ContainingType": "Savior.Controllers.EmergencyController",

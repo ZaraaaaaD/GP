@@ -26,41 +26,24 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/RegisterDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/RegisterDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/RegisterDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -105,17 +88,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/ForgotPasswordRequest"
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/ForgotPasswordRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/ForgotPasswordRequest"
               }
             }
           }
@@ -239,17 +222,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Doctor"
+                "$ref": "#/components/schemas/DoctorRegisterDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Doctor"
+                "$ref": "#/components/schemas/DoctorRegisterDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Doctor"
+                "$ref": "#/components/schemas/DoctorRegisterDto"
               }
             }
           }
@@ -257,6 +240,91 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/doctor/specialties": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/doctor/doctors/by-specialty": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "parameters": [
+          {
+            "name": "specialty",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DoctorDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DoctorDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DoctorDTO"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -274,7 +342,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Doctor"
+                    "$ref": "#/components/schemas/DoctorDTO"
                   }
                 }
               },
@@ -282,7 +350,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Doctor"
+                    "$ref": "#/components/schemas/DoctorDTO"
                   }
                 }
               },
@@ -290,7 +358,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Doctor"
+                    "$ref": "#/components/schemas/DoctorDTO"
                   }
                 }
               }
@@ -299,7 +367,7 @@
         }
       }
     },
-    "/api/doctor/doctor/{id}": {
+    "/api/doctor/{id}": {
       "get": {
         "tags": [
           "Doctor"
@@ -321,17 +389,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doctor"
+                  "$ref": "#/components/schemas/DoctorDTO"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doctor"
+                  "$ref": "#/components/schemas/DoctorDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doctor"
+                  "$ref": "#/components/schemas/DoctorDTO"
                 }
               }
             }
@@ -339,67 +407,49 @@
         }
       }
     },
-    "/api/doctor/update/{id}": {
-      "put": {
+    "/api/doctor/doctors/search": {
+      "get": {
         "tags": [
           "Doctor"
         ],
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
+            "name": "name",
+            "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Doctor"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Doctor"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Doctor"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/doctor/delete/{id}": {
-      "delete": {
-        "tags": [
-          "Doctor"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Doctor"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Doctor"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Doctor"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -413,93 +463,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Booking"
+                "$ref": "#/components/schemas/BookAppointmentDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Booking"
+                "$ref": "#/components/schemas/BookAppointmentDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Booking"
+                "$ref": "#/components/schemas/BookAppointmentDto"
               }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/doctor/bookings/{userId}": {
-      "get": {
-        "tags": [
-          "Doctor"
-        ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Booking"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Booking"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Booking"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/doctor/cancel/{bookingId}": {
-      "delete": {
-        "tags": [
-          "Doctor"
-        ],
-        "parameters": [
-          {
-            "name": "bookingId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -683,74 +661,29 @@
   },
   "components": {
     "schemas": {
-      "Booking": {
-        "required": [
-          "bookingNumber",
-          "bookingPrice",
-          "bookingTime",
-          "clinicID",
-          "patientBirthdate",
-          "patientGender",
-          "paymentMethod",
-          "receipt",
-          "userID"
-        ],
+      "BookAppointmentDto": {
         "type": "object",
         "properties": {
-          "bookingID": {
+          "doctorId": {
             "type": "integer",
             "format": "int32"
           },
-          "userID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "clinicID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "clinic": {
-            "$ref": "#/components/schemas/Clinic"
-          },
-          "patientBirthdate": {
+          "day": {
             "type": "string",
-            "format": "date-time"
+            "nullable": true
           },
-          "patientGender": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "bookingPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "bookingNumber": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "bookingTime": {
+          "phoneNumber": {
             "type": "string",
-            "format": "date-time"
-          },
-          "receipt": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "paymentMethod": {
-            "$ref": "#/components/schemas/PaymentForBooking"
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
       "Clinic": {
         "required": [
-          "buildingNumber",
-          "city",
+          "address",
           "name",
-          "street"
+          "phone"
         ],
         "type": "object",
         "properties": {
@@ -763,17 +696,35 @@
             "minLength": 0,
             "type": "string"
           },
+          "address": {
+            "minLength": 1,
+            "type": "string"
+          },
           "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "bookingPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "phone": {
             "minLength": 1,
             "type": "string"
           },
-          "street": {
-            "minLength": 1,
-            "type": "string"
+          "weeklySchedules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WeeklySchedule"
+            },
+            "nullable": true
           },
-          "buildingNumber": {
-            "type": "integer",
-            "format": "int32"
+          "dailySchedules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DailySchedule"
+            },
+            "nullable": true
           },
           "worksAts": {
             "type": "array",
@@ -823,6 +774,39 @@
         },
         "additionalProperties": false
       },
+      "DailySchedule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "doctorID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dayOfWeek": {
+            "type": "string",
+            "nullable": true
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "clinicID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "clinic": {
+            "$ref": "#/components/schemas/Clinic"
+          }
+        },
+        "additionalProperties": false
+      },
       "Doctor": {
         "required": [
           "bookingPrice",
@@ -866,14 +850,59 @@
             "minLength": 1,
             "type": "string"
           },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "ssn": {
+            "type": "string",
+            "nullable": true
+          },
+          "clinicName": {
+            "type": "string",
+            "nullable": true
+          },
           "email": {
             "minLength": 1,
             "type": "string",
             "format": "email"
           },
+          "rating": {
+            "type": "number",
+            "format": "double"
+          },
           "bookingPrice": {
             "type": "number",
             "format": "double"
+          },
+          "isApproved": {
+            "type": "boolean"
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "weeklySchedules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WeeklySchedule"
+            },
+            "nullable": true
+          },
+          "dailySchedules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DailySchedule"
+            },
+            "nullable": true
           },
           "worksAts": {
             "type": "array",
@@ -885,77 +914,131 @@
         },
         "additionalProperties": false
       },
-      "Emergency": {
-        "required": [
-          "location",
-          "type",
-          "userID"
-        ],
+      "DoctorDTO": {
         "type": "object",
         "properties": {
-          "emergencyID": {
+          "doctorID": {
             "type": "integer",
             "format": "int32"
           },
-          "userID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "location": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/EmergencyType"
-          },
-          "requestTime": {
+          "fullName": {
             "type": "string",
-            "format": "date-time"
+            "nullable": true
+          },
+          "specialty": {
+            "type": "string",
+            "nullable": true
+          },
+          "hospitalName": {
+            "type": "string",
+            "nullable": true
+          },
+          "hospitalAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "bookingPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "rating": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "clinicName": {
+            "type": "string",
+            "nullable": true
+          },
+          "clinicAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "clinicPhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "weeklyDays": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "dailyDays": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "dailyTime": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "EmergencyType": {
-        "enum": [
-          0,
-          1,
-          2
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "FirstAid": {
-        "required": [
-          "steps",
-          "userID"
-        ],
+      "DoctorRegisterDto": {
         "type": "object",
         "properties": {
-          "caseID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "title": {
+          "fName": {
             "type": "string",
             "nullable": true
           },
-          "symptoms": {
+          "lName": {
             "type": "string",
             "nullable": true
           },
-          "steps": {
-            "minLength": 1,
-            "type": "string"
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "specialty": {
+            "type": "string",
+            "nullable": true
+          },
+          "medicalLicenseNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "ssn": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "clinicName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ForgotPasswordRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -974,68 +1057,35 @@
         },
         "additionalProperties": false
       },
-      "MedicalRole": {
-        "enum": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "MedicalTeam": {
-        "required": [
-          "location",
-          "phone",
-          "role",
-          "userID"
-        ],
+      "RegisterDto": {
         "type": "object",
         "properties": {
-          "teamID": {
-            "type": "integer",
-            "format": "int32"
+          "firstName": {
+            "type": "string",
+            "nullable": true
           },
-          "role": {
-            "$ref": "#/components/schemas/MedicalRole"
+          "lastName": {
+            "type": "string",
+            "nullable": true
           },
-          "location": {
-            "minLength": 1,
-            "type": "string"
+          "email": {
+            "type": "string",
+            "nullable": true
           },
           "phone": {
-            "minLength": 1,
             "type": "string",
-            "format": "tel"
+            "nullable": true
           },
-          "userID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "requestTime": {
+          "password": {
             "type": "string",
-            "format": "date-time"
+            "nullable": true
           },
-          "duration": {
+          "confirmPassword": {
             "type": "string",
-            "format": "date-span",
             "nullable": true
           }
         },
         "additionalProperties": false
-      },
-      "PaymentForBooking": {
-        "enum": [
-          0,
-          1,
-          2
-        ],
-        "type": "integer",
-        "format": "int32"
       },
       "ResetPassword": {
         "type": "object",
@@ -1091,73 +1141,6 @@
         },
         "additionalProperties": false
       },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "fname": {
-            "type": "string",
-            "nullable": true
-          },
-          "lname": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "phone": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "resetCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "resetCodeExpiry": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "bookings": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Booking"
-            },
-            "nullable": true
-          },
-          "emergencyRequests": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Emergency"
-            },
-            "nullable": true
-          },
-          "medicalTeams": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MedicalTeam"
-            },
-            "nullable": true
-          },
-          "firstAids": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/FirstAid"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "WeatherForecast": {
         "type": "object",
         "properties": {
@@ -1181,10 +1164,32 @@
         },
         "additionalProperties": false
       },
+      "WeeklySchedule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "doctorID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dayOfWeek": {
+            "type": "string",
+            "nullable": true
+          },
+          "clinicID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "clinic": {
+            "$ref": "#/components/schemas/Clinic"
+          }
+        },
+        "additionalProperties": false
+      },
       "WorksAt": {
-        "required": [
-          "shiftTiming"
-        ],
         "type": "object",
         "properties": {
           "doctorID": {
@@ -1200,10 +1205,6 @@
           },
           "clinic": {
             "$ref": "#/components/schemas/Clinic"
-          },
-          "shiftTiming": {
-            "type": "string",
-            "format": "time"
           }
         },
         "additionalProperties": false
@@ -1212,7 +1213,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "http",
-        "description": "أدخل الـ JWT Token بالشكل ده: Bearer YOUR_TOKEN_HERE",
+        "description": "Bearer YOUR_TOKEN_HERE",
         "scheme": "Bearer",
         "bearerFormat": "JWT"
       }

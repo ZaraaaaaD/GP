@@ -276,10 +276,13 @@ E:\Graduation Project\Savior\obj\Debug\net8.0\staticwebassets\msbuild.build.Savi
 E:\Graduation Project\Savior\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Savior.props
 E:\Graduation Project\Savior\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Savior.props
 E:\Graduation Project\Savior\obj\Debug\net8.0\staticwebassets.pack.json
-E:\Graduation Project\Savior\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\Graduation Project\Savior\obj\Debug\net8.0\Savior.csproj.Up2Date
 E:\Graduation Project\Savior\obj\Debug\net8.0\Savior.dll
 E:\Graduation Project\Savior\obj\Debug\net8.0\refint\Savior.dll
 E:\Graduation Project\Savior\obj\Debug\net8.0\Savior.pdb
 E:\Graduation Project\Savior\obj\Debug\net8.0\Savior.genruntimeconfig.cache
 E:\Graduation Project\Savior\obj\Debug\net8.0\ref\Savior.dll
+E:\Graduation Project\Savior\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\Graduation Project\Savior\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Graduation Project\Savior\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Graduation Project\Savior\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

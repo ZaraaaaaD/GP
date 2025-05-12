@@ -144,3 +144,4 @@ E:\Graduation Project\Savior\obj\Release\net8.0\ref\Savior.dll
 E:\Graduation Project\Savior\bin\Release\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 E:\Graduation Project\Savior\bin\Release\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 E:\Graduation Project\Savior\bin\Release\net8.0\Microsoft.Extensions.Options.dll
+E:\Graduation Project\Savior\bin\Release\net8.0\BCrypt.Net-Next.dll

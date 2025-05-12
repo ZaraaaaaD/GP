@@ -32,7 +32,7 @@ public class ConnectUsController : ControllerBase
     public IActionResult GetFeedback()
     {
         var feedbackList = _context.ContactUs
-            .Select(f => new { f.Name, f.Email, f.Feedback })
+            .Select(f => new { f.Name,  f.Feedback })
             .ToList();
 
         return Ok(feedbackList);

@@ -62,39 +62,64 @@ namespace Savior.Controllers
             if (login == null)
                 return BadRequest("Email and Password are required.");
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == login.Email);
-
-            if (user == null || user.Password != login.Password)
-                return Unauthorized("Invalid credentials.");
-
-            var token = GenerateJwtToken(user);
-
-            return Ok(new
+            // أولاً: نبحث في جدول الأدمن
+            var admin = await _context.Admins.FirstOrDefaultAsync(a => a.Email == login.Email);
+            if (admin != null)
             {
-                Message = "Login successful",
-                Token = token
-            });
+                if (admin.Password != login.Password)
+                    return Unauthorized("Invalid credentials.");
+
+                var token = GenerateJwtToken(admin.Email, admin.Id, "Admin");
+
+                return Ok(new
+                {
+                    Message = "Login successful",
+                    Token = token,
+                    Role = "Admin"
+                });
+            }
+
+            // ثانياً: نبحث في جدول اليوزر
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == login.Email);
+            if (user != null)
+            {
+                if (user.Password != login.Password)
+                    return Unauthorized("Invalid credentials.");
+
+                var token = GenerateJwtToken(user.Email, user.Id, "User");
+
+                return Ok(new
+                {
+                    Message = "Login successful",
+                    Token = token,
+                    Role = "User"
+                });
+            }
+
+            return Unauthorized("Invalid credentials.");
         }
 
-        private string GenerateJwtToken(User user)
+        private string GenerateJwtToken(string email, int id, string role)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]); 
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email)
-            }),
-                Expires = DateTime.UtcNow.AddHours(72), 
+            new Claim(ClaimTypes.NameIdentifier, id.ToString()),
+            new Claim(ClaimTypes.Email, email),
+            new Claim(ClaimTypes.Role, role)
+        }),
+                Expires = DateTime.UtcNow.AddHours(72),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
         [HttpPost("forgot-password")]
         public async Task<ActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request, [FromServices] EmailService emailService)
         {

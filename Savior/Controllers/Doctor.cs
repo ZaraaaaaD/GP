@@ -88,20 +88,22 @@ public class DoctorController : ControllerBase
     public ActionResult<IEnumerable<string>> GetAllSpecialties()
     {
         var specialties = new List<string>
-    {
-        "Dentist",
-        "Orthopaedic",
-        "Ear, Nose, and Throat",
-        "Optometrists",
-        "Cardiologist",
-        "Pediatricians",
-        "Gynecologist",
-        "Physical Therapy",
-        "Dermatologists",
-        "Gastroenteritis",
-        "Psychiatrists",
-        "Top Rating"
-    };
+        {
+
+          "Dentist",
+          "Orthopaedic",
+          "Ear, Nose, and Throat",
+          "Optometrists",
+          "Cardiologist",
+          "Pediatricians",
+          "Gynecologist",
+          "Physical Therapy",
+          "Dermatologists",
+          "Gastroenteritis",
+          "Psychiatrists",
+          "Top Rating"
+
+        };
 
         return Ok(specialties);
     }

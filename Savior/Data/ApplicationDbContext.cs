@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Savior.Model;
 using Savior.Models;
 using System.Collections.Generic;
 
@@ -19,6 +20,8 @@ namespace Savior.Data
         public DbSet<WorksAt> WorksAts { get; set; }
         public DbSet<FirstAid> FirstAids { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

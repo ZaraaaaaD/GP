@@ -286,3 +286,4 @@ E:\Graduation Project\Savior\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\Graduation Project\Savior\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 E:\Graduation Project\Savior\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 E:\Graduation Project\Savior\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\Graduation Project\Savior\bin\Debug\net8.0\BCrypt.Net-Next.dll

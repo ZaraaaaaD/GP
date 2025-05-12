@@ -10,6 +10,68 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Savior.Controllers.AdminController",
+    "Method": "GetAllBookingsWithDetails",
+    "RelativePath": "api/Admin/admin/all-bookings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Savior.Controllers.AdminController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/Admin/all-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Savior.Controllers.AdminController",
+    "Method": "ApproveDoctor",
+    "RelativePath": "api/Admin/ApproveDoctor/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Savior.Controllers.AdminController",
+    "Method": "GetPendingDoctors",
+    "RelativePath": "api/Admin/PendingDoctors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Savior.Controllers.AdminController",
+    "Method": "RejectDoctor",
+    "RelativePath": "api/Admin/RejectDoctor/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Savior.Controllers.AuthenticationController",
     "Method": "ConfirmCode",
     "RelativePath": "api/Authentication/confirm-code",
@@ -159,6 +221,22 @@
   },
   {
     "ContainingType": "DoctorController",
+    "Method": "CancelBooking",
+    "RelativePath": "api/doctor/cancel-booking/{bookingId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoctorController",
     "Method": "GetDoctors",
     "RelativePath": "api/doctor/doctors",
     "HttpMethod": "GET",
@@ -228,6 +306,16 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "DoctorController",
+    "Method": "GetMyBookings",
+    "RelativePath": "api/doctor/mybookings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "DoctorController",

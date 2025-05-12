@@ -9,7 +9,12 @@ namespace Savior.Controllers
         [HttpGet]
         public IActionResult Welcome()
         {
+
+
             return Ok("Welcome to Emergency!");
+
+
+
         }
     }
 }

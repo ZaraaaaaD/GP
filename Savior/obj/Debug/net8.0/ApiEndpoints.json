@@ -11,16 +11,6 @@
   },
   {
     "ContainingType": "Savior.Controllers.AdminController",
-    "Method": "GetAllBookingsWithDetails",
-    "RelativePath": "api/Admin/admin/all-bookings",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Savior.Controllers.AdminController",
     "Method": "GetAllUsers",
     "RelativePath": "api/Admin/all-users",
     "HttpMethod": "GET",
@@ -69,6 +59,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Savior.Controllers.AuthenticationController",
+    "Method": "GetActiveUsers",
+    "RelativePath": "api/Authentication/active-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

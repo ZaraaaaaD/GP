@@ -75,18 +75,6 @@
         }
       }
     },
-    "/api/Admin/admin/all-bookings": {
-      "get": {
-        "tags": [
-          "Admin"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Admin/all-users": {
       "get": {
         "tags": [
@@ -247,6 +235,18 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Authentication/active-users": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
         "responses": {
           "200": {
             "description": "OK"

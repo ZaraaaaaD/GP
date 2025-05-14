@@ -10,6 +10,7 @@ using Savior.Services;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Savior.Dto;
 
 namespace Savior.Controllers
 {
@@ -62,7 +63,6 @@ namespace Savior.Controllers
             if (login == null)
                 return BadRequest("Email and Password are required.");
 
-            // أولاً: نبحث في جدول الأدمن
             var admin = await _context.Admins.FirstOrDefaultAsync(a => a.Email == login.Email);
             if (admin != null)
             {
@@ -79,7 +79,6 @@ namespace Savior.Controllers
                 });
             }
 
-            // ثانياً: نبحث في جدول اليوزر
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == login.Email);
             if (user != null)
             {
@@ -178,6 +177,23 @@ namespace Savior.Controllers
             await _context.SaveChangesAsync();
 
             return Ok("Password has been successfully reset.");
+        }
+        [HttpGet("active-users")]
+        public async Task<IActionResult> GetActiveUsers()
+        {
+            var users = await _context.Users
+                .Select(u => new ActiveUserDto
+                {
+                    Id = u.Id,
+                    Fname = u.Fname,
+                    Lname = u.Lname,
+                    Email = u.Email,
+                    Phone = u.Phone,
+                    Status = "Logged In"
+                })
+                .ToListAsync();
+
+            return Ok(users);
         }
 
     }
